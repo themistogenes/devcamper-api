@@ -17,6 +17,9 @@ const bootcamps = require('./routes/bootcamps');
 
 const app = express();
 
+// Body parser (allows you to send a req.body)
+app.use(express.json());
+
 // Middleware
 // Custom logger replaced by morgan
 // app.use(logger);
