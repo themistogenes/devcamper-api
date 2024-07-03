@@ -29,7 +29,6 @@ exports.getBootcamp = async (req, res, next) => {
     // Prevent a properly formatted id from sending back a 200 status
     if (!bootcamp) {
       // Must return to avoid sending back multiple headers
-      // return res.status(400).json({ success: false });
       return next(new ErrorResponse(`Bootcamp not found with id of ${req.params.id}`, 404));
     }
 
@@ -39,7 +38,6 @@ exports.getBootcamp = async (req, res, next) => {
       data: bootcamp
     })
   } catch (err) {
-    // res.status(400).json({ success: false });
     next(err);
   }
 }
