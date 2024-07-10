@@ -14,7 +14,10 @@ exports.getCourses = asyncHandler(async (req, res, next) => {
     query = Course.find({ bootcamp: req.params.bootcampId });
     msg = `Retrieved courses for bootcamp ${req.params.bootcampId}`;
   } else {
-    query = Course.find();
+    query = Course.find().populate({
+      path: 'bootcamp',
+      select: 'name description'
+    });
     msg = `Retrieved all courses`
   }
 
