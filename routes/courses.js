@@ -6,11 +6,13 @@ const {
   updateCourse,
   deleteCourse
 } = require('../controllers/courses');
-
 const Course = require('../models/Course');
 const advancedResults = require('../middleware/advancedResults');
 
 const router = express.Router({ mergeParams: true });
+
+// Auth protect middleware
+const { protect } = require('../middleware/auth');
 
 // /api/v1/courses
 router.route('/')
@@ -24,11 +26,12 @@ router.route('/')
     ), 
     getCourses
   )
-  .post(addCourse) // /api/v1/bootcamps/:bootcampId/courses
+  .post(protect, addCourse) // /api/v1/bootcamps/:bootcampId/courses
 
+// /api/v1/courses/:id
 router.route('/:id')
   .get(getCourse)
-  .put(updateCourse)
-  .delete(deleteCourse)
+  .put(protect, updateCourse)
+  .delete(protect, deleteCourse)
 
 module.exports = router;
