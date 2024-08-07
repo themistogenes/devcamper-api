@@ -1,7 +1,8 @@
 const express = require('express');
 const {
   getReviews,
-  getReview
+  getReview,
+  addReview
 } = require('../controllers/reviews');
 
 const Review = require('../models/Review');
@@ -22,6 +23,8 @@ router.route('/')
     }),
     getReviews
   )
+// /api/v1/bootcamps/:bootcampId/reviews
+  .post(protect, authorize('user', 'admin'), addReview)
 
 // /api/v1/reviews/:id
 router.route('/:id')
