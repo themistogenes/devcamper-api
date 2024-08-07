@@ -3,7 +3,8 @@ const {
   register, 
   login, 
   getMe, 
-  forgotPassword 
+  forgotPassword,
+  resetPassword
 } = require('../controllers/auth');
 
 const router = express.Router();
@@ -22,5 +23,8 @@ router.get('/me', protect, getMe);
 
 // /api/v1/auth/forgotpassword
 router.post('/forgotpassword', forgotPassword);
+
+// /api/v1/auth/forgotpassword
+router.put('/resetpassword/:resettoken', resetPassword);
 
 module.exports = router;
