@@ -1,6 +1,7 @@
 const express = require('express');
 const {
-  getReviews
+  getReviews,
+  getReview
 } = require('../controllers/reviews');
 
 const Review = require('../models/Review');
@@ -22,8 +23,8 @@ router.route('/')
     getReviews
   )
 
-// /api/v1/bootcamps/:bootcampId/reviews
-router.route('/:bootcampId/reviews')
-  .get(getReviews)
+// /api/v1/reviews/:id
+router.route('/:id')
+  .get(getReview)
 
 module.exports = router;
