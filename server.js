@@ -10,6 +10,8 @@ const cookieParser = require('cookie-parser');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const xss = require('xss-clean');
+const rateLimit = require('express-rate-limit');
+const hpp = require('hpp');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 
@@ -53,6 +55,16 @@ app.use(helmet());
 
 // Prevent XSS attacks
 app.use(xss());
+
+// Rate limit
+const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 mins
+  max: 100 // 100 requests
+})
+app.use(limiter);
+
+// Prevent http param pollution
+app.use(hpp());
 
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
