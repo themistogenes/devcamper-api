@@ -38,6 +38,7 @@ exports.getReview = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+    msg: `Retrieved review ${req.params.id}`,
     data: review
   })
 })
@@ -59,6 +60,7 @@ exports.addReview = asyncHandler(async (req, res, next) => {
 
   res.status(201).json({
     success: true,
+    msg: `Review created for bootcamp ${req.params.bootcampId}`,
     data: review
   })
 })
@@ -85,6 +87,7 @@ exports.updateReview = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+    msg: `Updated review ${req.params.id}`,
     data: review
   })
 })
@@ -108,6 +111,7 @@ exports.deleteReview = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+    msg: `Deleted review ${req.params.id}`,
     data: {}
   })
 })

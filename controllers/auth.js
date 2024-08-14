@@ -60,6 +60,7 @@ exports.logout = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+    msg: 'User logged out',
     data: {}
   })
 })
@@ -72,6 +73,7 @@ exports.getMe = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+    msg: `Retrieved information for ${req.user.id}`,
     data: user
   })
 })
@@ -92,6 +94,7 @@ exports.updateDetails = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+    msg: `Updated information for ${req.user.id}`,
     data: user
   })
 })
@@ -203,6 +206,7 @@ const sendTokenResponse = (user, statusCode, res) => {
     .cookie('token', token, options)
     .json({
       success: true,
+      msg: 'Cookie created',
       token
     })
 }

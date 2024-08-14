@@ -17,6 +17,7 @@ exports.getUser = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+    msg: `Retrieved user ${req.params.id}`,
     data: user
   })
 })
@@ -29,6 +30,7 @@ exports.createUser = asyncHandler(async (req, res, next) => {
 
   res.status(201).json({
     success: true,
+    msg: 'Created user',
     data: user
   })
 })
@@ -44,6 +46,7 @@ exports.updateUser = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+    msg: `Updated user ${req.params.id}`,
     data: user
   })
 })
@@ -56,6 +59,7 @@ exports.deleteUser = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+    msg: `Deleted user ${req.params.id}`,
     data: {}
   })
 })
